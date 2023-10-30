@@ -1,0 +1,38 @@
+{
+  "name" : "get-image-urls",
+  "description" : "testing brian foo scripts",
+  "role" : "arn:aws:iam::733704852582:role/service-role/AWSGlueServiceRole-sandbox",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 1
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://dataset-examples-pluribus/citizen-dj/scripts/download_query.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--enable-metrics" : "true",
+    "--enable-spark-ui" : "true",
+    "--spark-event-logs-path" : "s3://dataset-logs-pluribus/dataset-examples-pluribus/",
+    "--enable-job-insights" : "false",
+    "--enable-glue-datacatalog" : "true",
+    "--enable-continuous-cloudwatch-log" : "true",
+    "--job-bookmark-option" : "job-bookmark-disable",
+    "--job-language" : "python",
+    "--TempDir" : "s3://dataset-temp-pluribus/glue-jobs-temp/"
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 2,
+  "timeout" : 2880,
+  "maxCapacity" : 2.0,
+  "glueVersion" : "4.0",
+  "numberOfWorkers" : 2,
+  "workerType" : "G.1X",
+  "executionClass" : "STANDARD",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "LOC-DEW",
+    "branch" : "main",
+    "folder" : "get-image-urls"
+  }
+}
